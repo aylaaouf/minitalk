@@ -27,7 +27,7 @@ clean:
 	rm -f $(CLIENT_OBJS) $(SERVER_OBJS)
 
 flcean: clean
-	make -C $(LIBFTD) fclean
+	make -C (LIBFTD)
 	rm -f client server
 
 re: fclean all
