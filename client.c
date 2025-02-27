@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aylaaouf <aylaaouf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/27 17:46:19 by aylaaouf          #+#    #+#             */
-/*   Updated: 2025/02/27 17:52:09 by aylaaouf         ###   ########.fr       */
+/*   Created: 2025/02/27 18:00:13 by aylaaouf          #+#    #+#             */
+/*   Updated: 2025/02/27 18:14:28 by aylaaouf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void    parser(int ac, char **av)
 
     i = 0;
     pid = ft_atoi(av[1]);
-    if (av[1][0] == '\0')
+    if (!av[2][0])
     {
         ft_putstr_fd("Error: Message cannot be empty\n", 2);
         exit(1);
