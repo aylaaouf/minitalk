@@ -6,7 +6,7 @@
 /*   By: aylaaouf <aylaaouf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 18:00:13 by aylaaouf          #+#    #+#             */
-/*   Updated: 2025/02/28 16:58:30 by aylaaouf         ###   ########.fr       */
+/*   Updated: 2025/03/01 16:36:38 by aylaaouf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void    parser(int ac, char **av)
     }
 }
 
-void    encrypt(char c, int pid)
+void    encrypt_char(char c, int pid)
 {
     int i;
 
@@ -52,7 +52,7 @@ void    encrypt(char c, int pid)
         else
             kill(pid, SIGUSR2);
         usleep(500);
-        i++;
+        i--;
     }
 }
 
@@ -62,14 +62,15 @@ int main(int ac, char **av)
     char *msj;
     int i;
 
+    parser(ac, av);
     pid = ft_atoi(av[1]);
     msj = av[2];
     i = 0;
-    parser(ac, av);
     while (msj[i])
     {
-        encrypt(msj[i], pid);
+        encrypt_char(msj[i], pid);
         i++;
     }
-    encrypt('\0', pid);
+    encrypt_char('\0', pid);
+    exit(0);
 }
