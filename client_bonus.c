@@ -6,22 +6,22 @@
 /*   By: aylaaouf <aylaaouf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 16:15:31 by aylaaouf          #+#    #+#             */
-/*   Updated: 2025/03/01 19:09:47 by aylaaouf         ###   ########.fr       */
+/*   Updated: 2025/03/01 21:05:40 by aylaaouf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-void    parser(int ac, char **av)
+void	parser(int ac, char **av)
 {
+	int	i;
+	int	pid;
+
 	if (ac != 3)
 	{
 		ft_putstr_fd("Usage: ./client <server_pid> <message>\n", 2);
 		exit(1);
 	}
-	int i;
-	int pid;
-
 	i = 0;
 	pid = ft_atoi(av[1]);
 	if (!av[2][0])
@@ -40,9 +40,9 @@ void    parser(int ac, char **av)
 	}
 }
 
-void    encrypt_char(char c, int pid)
+void	encrypt_char(char c, int pid)
 {
-	int i;
+	int	i;
 
 	i = 7;
 	while (i >= 0)
@@ -64,15 +64,14 @@ void	signal_handler(int sig, siginfo_t *info, void *context)
 		ft_putstr_fd("the message has been received\n", 1);
 }
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
-	int pid;
-	char *msj;
-	int i;
+	struct sigaction	sa;
+	int					pid;
+	int					i;
+	char				*msj;
 
 	parser(ac, av);
-	struct sigaction sa;
-
 	sa.sa_sigaction = signal_handler;
 	sa.sa_flags = SA_SIGINFO;
 	sigemptyset(&sa.sa_mask);

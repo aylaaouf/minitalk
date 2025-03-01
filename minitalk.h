@@ -13,14 +13,14 @@
 #ifndef MINITALK_H
 # define MINITALK_H
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <signal.h>
-#include <unistd.h>
+# include <signal.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
 
-size_t  ft_strlen(const char *s);
-void    ft_putstr_fd(char *s, int fd);
-int     ft_isdigit(int c);
-int	    ft_atoi(const char *str);
+size_t	ft_strlen(const char *s);
+void	ft_putstr_fd(char *s, int fd);
+int		ft_isdigit(int c);
+int		ft_atoi(const char *str);
 
 #endif
