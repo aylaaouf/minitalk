@@ -6,7 +6,7 @@
 /*   By: aylaaouf <aylaaouf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 18:00:27 by aylaaouf          #+#    #+#             */
-/*   Updated: 2025/03/01 20:49:51 by aylaaouf         ###   ########.fr       */
+/*   Updated: 2025/03/02 21:37:19 by aylaaouf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,15 @@ void	signal_handler(int sig, siginfo_t *info, void *context)
 {
 	static int	bit = 0;
 	static char	c = 0;
+	static int	client_pid = 0;
 
 	(void)context;
-	(void)info;
+	if (client_pid != info->si_pid)
+	{
+		client_pid = info->si_pid;
+		bit = 0;
+		c = 0;
+	}
 	if (sig == SIGUSR2)
 		c = (c << 1);
 	else if (sig == SIGUSR1)
@@ -26,9 +32,9 @@ void	signal_handler(int sig, siginfo_t *info, void *context)
 	bit++;
 	if (bit == 8)
 	{
-		write(1, &c, 1);
 		if (c == '\0')
-			write(1, "\n", 1);
+			kill(client_pid, SIGUSR1);
+		write(1, &c, 1);
 		c = 0;
 		bit = 0;
 	}
