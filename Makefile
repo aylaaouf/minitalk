@@ -1,10 +1,11 @@
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g
 libft = utils.c
+libft_bonus = utils_bonus.c
 CLIENT_SRCS = client.c $(libft)
 SERVER_SRCS = server.c $(libft)
-CLIENT_SRCS_BONUS = client_bonus.c $(libft)
-SERVER_SRCS_BONUS = server_bonus.c $(libft)
+CLIENT_SRCS_BONUS = client_bonus.c $(libft_bonus)
+SERVER_SRCS_BONUS = server_bonus.c $(libft_bonus)
 CLIENT_OBJS = $(CLIENT_SRCS:.c=.o)
 SERVER_OBJS = $(SERVER_SRCS:.c=.o)
 CLIENT_OBJS_BONUS = $(CLIENT_SRCS_BONUS:.c=.o)
