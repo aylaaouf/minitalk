@@ -6,11 +6,11 @@
 /*   By: aylaaouf <aylaaouf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 16:15:50 by aylaaouf          #+#    #+#             */
-/*   Updated: 2025/03/02 02:14:56 by aylaaouf         ###   ########.fr       */
+/*   Updated: 2025/03/04 04:23:00 by aylaaouf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "minitalk_bonus.h"
 
 void	signal_handler(int sig, siginfo_t *info, void *context)
 {
