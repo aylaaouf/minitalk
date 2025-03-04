@@ -6,13 +6,11 @@
 /*   By: aylaaouf <aylaaouf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 04:22:23 by aylaaouf          #+#    #+#             */
-/*   Updated: 2025/03/04 04:22:39 by aylaaouf         ###   ########.fr       */
+/*   Updated: 2025/03/04 04:30:53 by aylaaouf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk_bonus.h"
-
-#include "minitalk.h"
 
 size_t	ft_strlen(const char *s)
 {
