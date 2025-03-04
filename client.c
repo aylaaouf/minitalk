@@ -6,7 +6,7 @@
 /*   By: aylaaouf <aylaaouf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 18:00:13 by aylaaouf          #+#    #+#             */
-/*   Updated: 2025/03/02 02:03:21 by aylaaouf         ###   ########.fr       */
+/*   Updated: 2025/03/04 03:52:08 by aylaaouf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	encrypt_char(char c, int pid)
 			kill(pid, SIGUSR1);
 		else
 			kill(pid, SIGUSR2);
-		usleep(900);
+		usleep(500);
 		i--;
 	}
 }
