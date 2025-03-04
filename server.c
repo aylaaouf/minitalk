@@ -6,7 +6,7 @@
 /*   By: aylaaouf <aylaaouf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 18:00:27 by aylaaouf          #+#    #+#             */
-/*   Updated: 2025/03/02 21:37:19 by aylaaouf         ###   ########.fr       */
+/*   Updated: 2025/03/04 04:05:42 by aylaaouf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@ void	signal_handler(int sig, siginfo_t *info, void *context)
 	bit++;
 	if (bit == 8)
 	{
-		if (c == '\0')
-			kill(client_pid, SIGUSR1);
 		write(1, &c, 1);
 		c = 0;
 		bit = 0;
