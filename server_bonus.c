@@ -6,11 +6,23 @@
 /*   By: aylaaouf <aylaaouf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 16:15:50 by aylaaouf          #+#    #+#             */
-/*   Updated: 2025/03/04 04:23:00 by aylaaouf         ###   ########.fr       */
+/*   Updated: 2025/03/08 20:43:13 by aylaaouf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk_bonus.h"
+
+void	ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
+
+void	ft_putnbr(long nbr)
+{
+	if (nbr > 9)
+		ft_putnbr(nbr / 10);
+	ft_putchar((nbr % 10) + 48);
+}
 
 void	signal_handler(int sig, siginfo_t *info, void *context)
 {
@@ -43,8 +55,10 @@ void	signal_handler(int sig, siginfo_t *info, void *context)
 int	main(int ac, char **av)
 {
 	struct sigaction	sa;
+	long				pid;
 
 	(void)av;
+	pid = getpid();
 	if (ac != 1)
 	{
 		ft_putstr_fd("Usage: ./server\n", 2);
@@ -55,7 +69,9 @@ int	main(int ac, char **av)
 	sigemptyset(&sa.sa_mask);
 	sigaction(SIGUSR1, &sa, NULL);
 	sigaction(SIGUSR2, &sa, NULL);
-	printf("Server PID: %d\n", getpid());
+	ft_putstr_fd("Server PID: ", 1);
+	ft_putnbr(pid);
+	write(1, "\n", 1);
 	while (1)
 		pause();
 }
