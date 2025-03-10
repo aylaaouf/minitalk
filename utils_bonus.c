@@ -6,13 +6,11 @@
 /*   By: aylaaouf <aylaaouf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 04:22:23 by aylaaouf          #+#    #+#             */
-/*   Updated: 2025/03/04 04:22:39 by aylaaouf         ###   ########.fr       */
+/*   Updated: 2025/03/08 22:02:44 by aylaaouf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk_bonus.h"
-
-#include "minitalk.h"
 
 size_t	ft_strlen(const char *s)
 {
@@ -38,11 +36,11 @@ int	ft_isdigit(int c)
 	return (0);
 }
 
-int	ft_atoi(const char *str)
+int	ft_atoi(const char *str, int *error)
 {
-	int	i;
-	int	result;
-	int	sign;
+	int		i;
+	long	result;
+	int		sign;
 
 	i = 0;
 	result = 0;
@@ -52,14 +50,14 @@ int	ft_atoi(const char *str)
 	if (str[i] == '+' || str[i] == '-')
 	{
 		if (str[i] == '-')
-		{
 			sign *= -1;
-		}
 		i++;
 	}
 	while (str[i] >= '0' && str[i] <= '9')
 	{
 		result = result * 10 + str[i] - '0';
+		if ((result * sign) > 2147483647 || (result * sign) < -2147483648)
+			return (*error = 1);
 		i++;
 	}
 	return (result * sign);

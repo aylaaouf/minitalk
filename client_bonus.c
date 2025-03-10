@@ -6,7 +6,7 @@
 /*   By: aylaaouf <aylaaouf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 16:15:31 by aylaaouf          #+#    #+#             */
-/*   Updated: 2025/03/04 04:23:12 by aylaaouf         ###   ########.fr       */
+/*   Updated: 2025/03/08 22:00:37 by aylaaouf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,17 @@
 
 void	parser(int ac, char **av)
 {
-	int	i;
-	int	pid;
+	long	pid;
 
+	int i, (check);
 	if (ac != 3)
 	{
 		ft_putstr_fd("Usage: ./client <server_pid> <message>\n", 2);
 		exit(1);
 	}
 	i = 0;
-	pid = ft_atoi(av[1]);
+	check = 0;
+	pid = ft_atoi(av[1], &check);
 	if (!av[2][0])
 	{
 		ft_putstr_fd("Error: Message cannot be empty\n", 2);
@@ -31,7 +32,7 @@ void	parser(int ac, char **av)
 	}
 	while (av[1][i])
 	{
-		if (!ft_isdigit(av[1][i]) || pid <= 0)
+		if (check == 1 || !ft_isdigit(av[1][i]))
 		{
 			ft_putstr_fd("Error: Invalid PID\n", 2);
 			exit(1);
@@ -67,7 +68,7 @@ void	signal_handler(int sig, siginfo_t *info, void *context)
 int	main(int ac, char **av)
 {
 	struct sigaction	sa;
-	int					pid;
+	long				pid;
 	int					i;
 	char				*msj;
 
@@ -76,7 +77,7 @@ int	main(int ac, char **av)
 	sa.sa_flags = SA_SIGINFO;
 	sigemptyset(&sa.sa_mask);
 	sigaction(SIGUSR1, &sa, NULL);
-	pid = ft_atoi(av[1]);
+	pid = ft_atoi(av[1], 0);
 	msj = av[2];
 	i = 0;
 	while (msj[i])
